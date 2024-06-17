@@ -613,7 +613,7 @@ const DCDU: React.FC = () => {
               visibleMessages[0].Direction === AtsuMessageDirection.Uplink && (
                 <CloseButtons message={visibleMessages[0]} closeMessage={closeMessage} />
               )}
-            {visibleMessages === undefined && <RecallButtons recallMessage={recallMessage} />}
+            {visibleMessages === undefined && messages.size > 0 && <RecallButtons recallMessage={recallMessage} />}
             <AtsuStatusMessage visibleMessage={visibleMessageStatus} systemMessage={systemStatusMessage} />
             <DcduLines />
             {messagesRef.current.size > 1 && (
