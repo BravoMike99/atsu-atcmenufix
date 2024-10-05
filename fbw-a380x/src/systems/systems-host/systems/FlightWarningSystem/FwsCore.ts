@@ -1156,10 +1156,6 @@ export class FwsCore implements Instrument {
 
   public readonly engDualFault = Subject.create(false);
 
-  public readonly engine1Generator = Subject.create(false);
-
-  public readonly engine2Generator = Subject.create(false);
-
   public readonly emergencyElectricGeneratorPotential = Subject.create(0);
 
   public readonly emergencyGeneratorOn = this.emergencyElectricGeneratorPotential.map((it) => it > 0);
@@ -1611,7 +1607,7 @@ export class FwsCore implements Instrument {
     this.flightPhase910.set([9, 10].includes(fwcFlightPhase));
     const flightPhase6789 = [6, 7, 8, 9].includes(fwcFlightPhase);
     const flightPhase211 = [2, 11].includes(fwcFlightPhase);
-    this.flightPhase1812ConfNode.write([2, 8, 12].includes(fwcFlightPhase), deltaTime);
+    this.flightPhase1812ConfNode.write([1, 8, 12].includes(fwcFlightPhase), deltaTime);
     this.flightPhase860sConfNode.write(fwcFlightPhase == 8, deltaTime);
 
     // TO CONFIG button
@@ -1724,29 +1720,26 @@ export class FwsCore implements Instrument {
     this.gen3PbOffConfNode.write(!SimVar.GetSimVarValue('L:A32NX_OVHD_ELEC_ENG_GEN_3_PB_IS_ON', 'bool'), deltaTime);
     this.gen4PbOffConfNode.write(!SimVar.GetSimVarValue('L:A32NX_OVHD_ELEC_ENG_GEN_4_PB_IS_ON', 'bool'), deltaTime);
 
-    this.eng1RunningNotPhase860sConfNode.write(!flightPhase8 && !this.engine1Running.get(), deltaTime);
-    this.eng2RunningNotPhase860sConfNode.write(!flightPhase8 && !this.engine1Running.get(), deltaTime);
-    this.eng3RunningNotPhase860sConfNode.write(!flightPhase8 && !this.engine1Running.get(), deltaTime);
-    this.eng4RunningNotPhase860sConfNode.write(!flightPhase8 && !this.engine1Running.get(), deltaTime);
+    this.eng1RunningNotPhase860sConfNode.write(!flightPhase8 && this.engine1Running.get(), deltaTime);
+    this.eng2RunningNotPhase860sConfNode.write(!flightPhase8 && this.engine2Running.get(), deltaTime);
+    this.eng3RunningNotPhase860sConfNode.write(!flightPhase8 && this.engine3Running.get(), deltaTime);
+    this.eng4RunningNotPhase860sConfNode.write(!flightPhase8 && this.engine4Running.get(), deltaTime);
 
     this.gen1AbnormalyOff.set(
       this.gen1PbOffConfNode.read() &&
         (this.eng1RunningNotPhase860sConfNode.read() || this.flightPhase860sConfNode.read() || toConfigCheckedOrPhase3),
     );
-
-    this.gen1AbnormalyOff.set(
+    this.gen2AbnormalyOff.set(
       this.gen2PbOffConfNode.read() &&
-        (this.eng1RunningNotPhase860sConfNode.read() || this.flightPhase860sConfNode.read() || toConfigCheckedOrPhase3),
+        (this.eng2RunningNotPhase860sConfNode.read() || this.flightPhase860sConfNode.read() || toConfigCheckedOrPhase3),
     );
-
-    this.gen1AbnormalyOff.set(
+    this.gen3AbnormalyOff.set(
       this.gen3PbOffConfNode.read() &&
-        (this.eng1RunningNotPhase860sConfNode.read() || this.flightPhase860sConfNode.read() || toConfigCheckedOrPhase3),
+        (this.eng3RunningNotPhase860sConfNode.read() || this.flightPhase860sConfNode.read() || toConfigCheckedOrPhase3),
     );
-
-    this.gen1AbnormalyOff.set(
+    this.gen4AbnormalyOff.set(
       this.gen4PbOffConfNode.read() &&
-        (this.eng1RunningNotPhase860sConfNode.read() || this.flightPhase860sConfNode.read() || toConfigCheckedOrPhase3),
+        (this.eng4RunningNotPhase860sConfNode.read() || this.flightPhase860sConfNode.read() || toConfigCheckedOrPhase3),
     );
     // Batteries abnormaly off
     this.bat1AbnormalyOff.set(
@@ -1755,7 +1748,6 @@ export class FwsCore implements Instrument {
     );
     this.bat2AbnormalyOff.set(
       (flightPhase211 || this.flightPhase1812ConfNode.read()) &&
-        this.flightPhase1812ConfNode.read() &&
         !SimVar.GetSimVarValue('L:A32NX_OVHD_ELEC_BAT_2_PB_IS_AUTO', 'bool'),
     );
     this.batEssAbnormalyOff.set(
@@ -1768,7 +1760,7 @@ export class FwsCore implements Instrument {
     );
 
     // TODO check for not smoke/fumes proceds & elec emer config active
-    this.busTieAbnormalyOff.set(!SimVar.GetSimVarValue('A32NX_OVHD_ELEC_BUS_TIE_PB_IS_AUTO', 'Bool'));
+    this.busTieAbnormalyOff.set(!SimVar.GetSimVarValue('L:A32NX_OVHD_ELEC_BUS_TIE_PB_IS_AUTO', 'Bool'));
 
     /* ENGINE AND THROTTLE acquisition */
 
@@ -1800,9 +1792,6 @@ export class FwsCore implements Instrument {
 
     // FIXME move out of acquisition to logic below
     const oneEngineAboveMinPower = this.engine1AboveIdle.get() || this.engine2AboveIdle.get();
-
-    this.engine1Generator.set(SimVar.GetSimVarValue('L:A32NX_ELEC_ENG_GEN_1_POTENTIAL_NORMAL', 'bool'));
-    this.engine2Generator.set(SimVar.GetSimVarValue('L:A32NX_ELEC_ENG_GEN_2_POTENTIAL_NORMAL', 'bool'));
     this.emergencyElectricGeneratorPotential.set(SimVar.GetSimVarValue('L:A32NX_ELEC_EMER_GEN_POTENTIAL', 'number'));
 
     this.apuMasterSwitch.set(SimVar.GetSimVarValue('L:A32NX_OVHD_APU_MASTER_SW_PB_IS_ON', 'bool'));

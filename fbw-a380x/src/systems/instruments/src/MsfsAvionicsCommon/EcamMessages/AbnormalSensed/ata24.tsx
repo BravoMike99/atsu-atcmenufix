@@ -891,7 +891,6 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
     title: '\x1b<4m\x1b4mELEC\x1bm BAT APU OFF',
     sensed: true,
     items: [
-      // If the temperature of the battery is excessive
       {
         name: 'BAT APU',
         sensed: true,
