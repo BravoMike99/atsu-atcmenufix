@@ -1715,10 +1715,10 @@ export class FwsCore implements Instrument {
     // GEN Abnormaly OFF
 
     // TODO check for generator fault or IDG disc
-    this.gen1PbOffConfNode.write(!SimVar.GetSimVarValue('L:A32NX_OVHD_ELEC_ENG_GEN_1_PB_IS_ON', 'bool'), deltaTime);
-    this.gen2PbOffConfNode.write(!SimVar.GetSimVarValue('L:A32NX_OVHD_ELEC_ENG_GEN_2_PB_IS_ON', 'bool'), deltaTime);
-    this.gen3PbOffConfNode.write(!SimVar.GetSimVarValue('L:A32NX_OVHD_ELEC_ENG_GEN_3_PB_IS_ON', 'bool'), deltaTime);
-    this.gen4PbOffConfNode.write(!SimVar.GetSimVarValue('L:A32NX_OVHD_ELEC_ENG_GEN_4_PB_IS_ON', 'bool'), deltaTime);
+    this.gen1PbOffConfNode.write(!SimVar.GetSimVarValue('GENERAL ENG MASTER ALTERNATOR:1', 'number'), deltaTime);
+    this.gen2PbOffConfNode.write(!SimVar.GetSimVarValue('GENERAL ENG MASTER ALTERNATOR:2', 'number'), deltaTime);
+    this.gen3PbOffConfNode.write(!SimVar.GetSimVarValue('GENERAL ENG MASTER ALTERNATOR:3', 'number'), deltaTime);
+    this.gen4PbOffConfNode.write(!SimVar.GetSimVarValue('GENERAL ENG MASTER ALTERNATOR:4', 'number'), deltaTime);
 
     this.eng1RunningNotPhase860sConfNode.write(!flightPhase8 && this.engine1Running.get(), deltaTime);
     this.eng2RunningNotPhase860sConfNode.write(!flightPhase8 && this.engine2Running.get(), deltaTime);
