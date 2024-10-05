@@ -819,45 +819,102 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
     ],
   },
   240800017: {
-    title: '\x1b<4m\x1b4mELEC\x1bm BAT 1 (ESS) FAULT',
+    title: '\x1b<4m\x1b4mELEC\x1bm BAT 1 FAULT',
     sensed: true,
     items: [
       // If the temperature of the battery is excessive
       {
-        name: 'BAT 1(ESS)',
+        name: 'BAT 1',
         sensed: true,
         labelNotCompleted: 'OFF',
       },
     ],
   },
   240800018: {
-    title: '\x1b<4m\x1b4mELEC\x1bm BAT 2 (ESS) FAULT',
+    title: '\x1b<4m\x1b4mELEC\x1bm BAT 2 FAULT',
     sensed: true,
     items: [
       // If the temperature of the battery is excessive
       {
-        name: 'BAT 2(ESS)',
+        name: 'BAT 2',
         sensed: true,
         labelNotCompleted: 'OFF',
       },
     ],
   },
   240800019: {
+    title: '\x1b<4m\x1b4mELEC\x1bm BAT ESS FAULT',
+    sensed: true,
+    items: [
+      // If the temperature of the battery is excessive
+      {
+        name: 'BAT ESS',
+        sensed: true,
+        labelNotCompleted: 'OFF',
+      },
+    ],
+  },
+  240800020: {
+    title: '\x1b<4m\x1b4mELEC\x1bm BAT 1 OFF',
+    sensed: true,
+    items: [
+      {
+        name: 'BAT 1',
+        sensed: true,
+        labelNotCompleted: 'ON',
+      },
+    ],
+  },
+  240800021: {
+    title: '\x1b<4m\x1b4mELEC\x1bm BAT 2 OFF',
+    sensed: true,
+    items: [
+      {
+        name: 'BAT 2',
+        sensed: true,
+        labelNotCompleted: 'ON',
+      },
+    ],
+  },
+  240800022: {
+    title: '\x1b<4m\x1b4mELEC\x1bm BAT ESS OFF',
+    sensed: true,
+    items: [
+      {
+        name: 'BAT ESS',
+        sensed: true,
+        labelNotCompleted: 'ON',
+      },
+    ],
+  },
+  240800023: {
+    title: '\x1b<4m\x1b4mELEC\x1bm BAT APU OFF',
+    sensed: true,
+    items: [
+      // If the temperature of the battery is excessive
+      {
+        name: 'BAT APU',
+        sensed: true,
+        labelNotCompleted: 'ON',
+      },
+    ],
+  },
+  240800024: {
     title: '\x1b<4m\x1b4mELEC\x1bm BUS TIE OFF',
     sensed: true,
     items: [],
   },
-  240800020: {
+  240800025: {
     title: '\x1b<4m\x1b4mELEC\x1bm C/B MONITORING FAULT',
     sensed: true,
     items: [],
   },
-  240800021: {
+  240800026: {
     title: '\x1b<4m\x1b4mELEC\x1bm C/B TRIPPED',
     sensed: true,
     items: [],
   },
-  240800022: {
+  240800027: {
     title: '\x1b<4m\x1b4mELEC\x1bm CABIN L SUPPLY CENTER OVHT',
     sensed: true,
     items: [
@@ -868,7 +925,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800023: {
+  240800028: {
     title: '\x1b<4m\x1b4mELEC\x1bm CABIN R SUPPLY CENTER OVHT',
     sensed: true,
     items: [
@@ -879,17 +936,17 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800024: {
+  240800029: {
     title: '\x1b<4m\x1b4mELEC\x1bm CABIN L SUPPLY CENTER OVHT DET FAULT',
     sensed: true,
     items: [],
   },
-  240800025: {
+  240800030: {
     title: '\x1b<4m\x1b4mELEC\x1bm CABIN R SUPPLY CENTER OVHT DET FAULT',
     sensed: true,
     items: [],
   },
-  240800026: {
+  240800031: {
     title: '\x1b<4m\x1b4mELEC\x1bm DC BUS 1 FAULT',
     sensed: true,
     items: [
@@ -952,7 +1009,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800027: {
+  240800032: {
     title: '\x1b<4m\x1b4mELEC\x1bm DC BUS 1 +2 FAULT',
     sensed: true,
     items: [
@@ -1065,7 +1122,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800028: {
+  240800033: {
     title: '\x1b<4m\x1b4mELEC\x1bm DC BUS 1+ESS FAULT',
     recommendation: 'LAND ANSA',
     sensed: true,
@@ -1168,7 +1225,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800029: {
+  240800034: {
     title: '\x1b<4m\x1b4mELEC\x1bm DC BUS 2 FAULT',
     sensed: true,
     items: [
@@ -1234,7 +1291,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800030: {
+  240800035: {
     title: '\x1b<4m\x1b4mELEC\x1bm DC ESS BUS FAULT',
     sensed: true,
     items: [
@@ -1339,7 +1396,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800031: {
+  240800036: {
     title: '\x1b<4m\x1b4mELEC\x1bm DC ESS BUS PART FAULT',
     sensed: true,
     items: [
@@ -1427,27 +1484,27 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800032: {
+  240800037: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 1 DISC FAULT',
     sensed: true,
     items: [],
   },
-  240800033: {
+  240800038: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 2 DISC FAULT',
     sensed: true,
     items: [],
   },
-  240800034: {
+  240800039: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 3 DISC FAULT',
     sensed: true,
     items: [],
   },
-  240800035: {
+  240800040: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 4 DISC FAULT',
     sensed: true,
     items: [],
   },
-  240800036: {
+  240800041: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 1 DISCONNECTED',
     sensed: true,
     items: [
@@ -1458,7 +1515,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800037: {
+  240800042: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 2 DISCONNECTED',
     sensed: true,
     items: [
@@ -1469,7 +1526,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800038: {
+  240800043: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 3 DISCONNECTED',
     sensed: true,
     items: [
@@ -1480,7 +1537,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800039: {
+  240800044: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 4 DISCONNECTED',
     sensed: true,
     items: [
@@ -1491,7 +1548,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800040: {
+  240800045: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 1 OIL LEVEL LO',
     sensed: true,
     items: [
@@ -1502,7 +1559,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800041: {
+  240800046: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 2 OIL LEVEL LO',
     sensed: true,
     items: [
@@ -1513,7 +1570,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800042: {
+  240800047: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 3 OIL LEVEL LO',
     sensed: true,
     items: [
@@ -1524,7 +1581,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800043: {
+  240800048: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 4 OIL LEVEL LO',
     sensed: true,
     items: [
@@ -1535,7 +1592,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800044: {
+  240800049: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 1 OIL OVHT',
     sensed: true,
     items: [
@@ -1551,7 +1608,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800045: {
+  240800050: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 2 OIL OVHT',
     sensed: true,
     items: [
@@ -1567,7 +1624,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800046: {
+  240800051: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 3 OIL OVHT',
     sensed: true,
     items: [
@@ -1583,7 +1640,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800047: {
+  240800052: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 4 OIL OVHT',
     sensed: true,
     items: [
@@ -1599,7 +1656,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800048: {
+  240800053: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 1 OIL PRESS LO',
     sensed: true,
     items: [
@@ -1615,7 +1672,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800049: {
+  240800054: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 2 OIL PRESS LO',
     sensed: true,
     items: [
@@ -1631,7 +1688,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800050: {
+  240800055: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 3 OIL PRESS LO',
     sensed: true,
     items: [
@@ -1647,7 +1704,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800051: {
+  240800056: {
     title: '\x1b<4m\x1b4mELEC\x1bm DRIVE 4 OIL PRESS LO',
     sensed: true,
     items: [
@@ -1663,7 +1720,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800052: {
+  240800057: {
     title: '\x1b<4m\x1b4mELEC\x1bm ELEC NETWORK MANAGEMENT 1 FAULT',
     sensed: true,
     items: [
@@ -1673,7 +1730,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800053: {
+  240800058: {
     title: '\x1b<4m\x1b4mELEC\x1bm ELEC NETWORK MANAGEMENT 2 FAULT',
     sensed: true,
     items: [
@@ -1683,12 +1740,12 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800054: {
+  240800059: {
     title: '\x1b<4m\x1b4mELEC\x1bm EMER C/B MONITORING FAULT',
     sensed: true,
     items: [],
   },
-  240800055: {
+  240800060: {
     title: '\x1b<2m\x1b4mELEC\x1bm EMER CONFIG',
     sensed: true,
     recommendation: 'LAND ASAP',
@@ -1851,7 +1908,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800056: {
+  240800061: {
     title: '\x1b<4m\x1b4mELEC\x1bm EXT PWR 1 FAULT',
     sensed: true,
     items: [
@@ -1862,7 +1919,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800057: {
+  240800062: {
     title: '\x1b<4m\x1b4mELEC\x1bm EXT PWR 2 FAULT',
     sensed: true,
     items: [
@@ -1873,7 +1930,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800058: {
+  240800063: {
     title: '\x1b<4m\x1b4mELEC\x1bm EXT PWR 3 FAULT',
     sensed: true,
     items: [
@@ -1884,7 +1941,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800059: {
+  240800064: {
     title: '\x1b<4m\x1b4mELEC\x1bm EXT PWR 4 FAULT',
     sensed: true,
     items: [
@@ -1895,12 +1952,12 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800060: {
+  240800065: {
     title: '\x1b<4m\x1b4mELEC\x1bm  F/CTL ACTUATOR PWR SUPPLY FAULT',
     sensed: true,
     items: [],
   },
-  240800061: {
+  240800066: {
     title: '\x1b<4m\x1b4mELEC\x1bm GEN 1 FAULT',
     sensed: true,
     items: [
@@ -1911,7 +1968,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800062: {
+  240800067: {
     title: '\x1b<4m\x1b4mELEC\x1bm GEN 2 FAULT',
     sensed: true,
     items: [
@@ -1922,7 +1979,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800063: {
+  240800068: {
     title: '\x1b<4m\x1b4mELEC\x1bm GEN 3 FAULT',
     sensed: true,
     items: [
@@ -1933,7 +1990,7 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800064: {
+  240800069: {
     title: '\x1b<4m\x1b4mELEC\x1bm GEN 4 FAULT',
     sensed: true,
     items: [
@@ -1944,27 +2001,27 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800065: {
+  240800070: {
     title: '\x1b<4m\x1b4mELEC\x1bm GEN 1 OFF',
     sensed: true,
     items: [],
   },
-  240800066: {
+  240800071: {
     title: '\x1b<4m\x1b4mELEC\x1bm GEN 2 OFF',
     sensed: true,
     items: [],
   },
-  240800067: {
+  240800072: {
     title: '\x1b<4m\x1b4mELEC\x1bm GEN 3 OFF',
     sensed: true,
     items: [],
   },
-  240800068: {
+  240800073: {
     title: '\x1b<4m\x1b4mELEC\x1bm GEN 4 OFF',
     sensed: true,
     items: [],
   },
-  240800069: {
+  240800074: {
     title: '\x1b<4m\x1b4mELEC\x1bm LOAD MANAGEMENT FAULT',
     sensed: true,
     items: [
@@ -1975,22 +2032,22 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800070: {
+  240800075: {
     title: '\x1b<4m\x1b4mELEC\x1bm PRIMARY SUPPLY CENTER 1 FAULT',
     sensed: true,
     items: [],
   },
-  240800071: {
+  240800076: {
     title: '\x1b<4m\x1b4mELEC\x1bm PRIMARY SUPPLY CENTER 2 FAULT',
     sensed: true,
     items: [],
   },
-  240800072: {
+  240800077: {
     title: '\x1b<4m\x1b4mELEC\x1bm RAT FAULT',
     sensed: true,
     items: [],
   },
-  240800073: {
+  240800078: {
     title: '\x1b<4m\x1b4mELEC\x1bm REMOTE C/B CTL ACTIVE',
     sensed: true,
     items: [
@@ -2001,67 +2058,67 @@ export const EcamAbnormalSensedAta24: { [n: number]: AbnormalProcedure } = {
       },
     ],
   },
-  240800074: {
+  240800079: {
     title: '\x1b<4m\x1b4mELEC\x1bm SECONDARY SUPPLY CENTER 1 DEGRADED',
     sensed: true,
     items: [],
   },
-  240800075: {
+  240800080: {
     title: '\x1b<4m\x1b4mELEC\x1bm SECONDARY SUPPLY CENTER 2 DEGRADED',
     sensed: true,
     items: [],
   },
-  240800076: {
+  240800081: {
     title: '\x1b<4m\x1b4mELEC\x1bm SECONDARY SUPPLY CENTER 1 FAULT',
     sensed: true,
     items: [],
   },
-  240800077: {
+  240800082: {
     title: '\x1b<4m\x1b4mELEC\x1bm SECONDARY SUPPLY CENTER 2 FAULT',
     sensed: true,
     items: [],
   },
-  240800078: {
+  240800083: {
     title: '\x1b<4m\x1b4mELEC\x1bm SECONDARY SUPPLY CENTER 1 REDUND LOST',
     sensed: true,
     items: [],
   },
-  240800079: {
+  240800084: {
     title: '\x1b<4m\x1b4mELEC\x1bm SECONDARY SUPPLY CENTER 2 REDUND LOST',
     sensed: true,
     items: [],
   },
-  240800080: {
+  240800085: {
     title: '\x1b<4m\x1b4mELEC\x1bm STATIC INV FAULT',
     sensed: true,
     items: [],
   },
-  240800081: {
+  240800086: {
     title: '\x1b<4m\x1b4mELEC\x1bm TR 1 FAULT',
     sensed: true,
     items: [],
   },
-  240800082: {
+  240800087: {
     title: '\x1b<4m\x1b4mELEC\x1bm TR 2 FAULT',
     sensed: true,
     items: [],
   },
-  240800083: {
+  240800088: {
     title: '\x1b<4m\x1b4mELEC\x1bm TR ESS FAULT',
     sensed: true,
     items: [],
   },
-  240800084: {
+  240800089: {
     title: '\x1b<4m\x1b4mELEC\x1bm TR 1 MONITORING FAULT',
     sensed: true,
     items: [],
   },
-  240800085: {
+  240800090: {
     title: '\x1b<4m\x1b4mELEC\x1bm TR 2 MONITORING FAULT',
     sensed: true,
     items: [],
   },
-  240800086: {
+  240800091: {
     title: '\x1b<4m\x1b4mELEC\x1bm TR ESS MONITORING FAULT',
     sensed: true,
     items: [],

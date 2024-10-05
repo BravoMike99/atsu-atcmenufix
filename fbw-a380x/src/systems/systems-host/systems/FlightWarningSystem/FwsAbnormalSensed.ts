@@ -457,6 +457,97 @@ export class FwsAbnormalSensed {
       inopSysAllPhases: () => ['230300016', '230300017', '230300018', '230300019', '230300006', '230300015'],
       limitationsAllPhases: () => ['230400001'],
     },
+    // 24 - ELECTRICAL
+    240800020: {
+      // BAT 1 OFF
+      flightPhaseInhib: [3, 4, 5, 6, 7, 9, 10],
+      simVarIsActive: this.fws.bat1AbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [true],
+      whichItemsChecked: () => [false],
+      failure: 2,
+      sysPage: 10,
+    },
+    240800021: {
+      // BAT 2 OFF
+      flightPhaseInhib: [3, 4, 5, 6, 7, 9, 10],
+      simVarIsActive: this.fws.bat2AbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [true],
+      whichItemsChecked: () => [false],
+      failure: 2,
+      sysPage: 10,
+    },
+    240800022: {
+      // BAT ESS OFF
+      flightPhaseInhib: [3, 4, 5, 6, 7, 9, 10],
+      simVarIsActive: this.fws.batEssAbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [true],
+      whichItemsChecked: () => [false],
+      failure: 2,
+      sysPage: 10,
+    },
+    240800023: {
+      // BAT APU OFF
+      flightPhaseInhib: [3, 4, 5, 6, 7, 9, 10],
+      simVarIsActive: this.fws.batApuAbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [true],
+      whichItemsChecked: () => [false],
+      failure: 2,
+      sysPage: 10,
+    },
+    240800024: {
+      // BUS TIE OFF
+      flightPhaseInhib: [3, 4, 5, 6, 7, 9, 10],
+      simVarIsActive: this.fws.busTieAbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [],
+      whichItemsChecked: () => [],
+      failure: 2,
+      sysPage: -1,
+    },
+    240800070: {
+      // GEN 1 OFF
+      flightPhaseInhib: [1, 4, 5, 6, 7, 9, 10, 12],
+      simVarIsActive: this.fws.gen1AbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [],
+      whichItemsChecked: () => [],
+      failure: 2,
+      sysPage: 3,
+    },
+    240800071: {
+      // GEN 2 OFF
+      flightPhaseInhib: [1, 4, 5, 6, 7, 9, 10, 12],
+      simVarIsActive: this.fws.gen2AbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [],
+      whichItemsChecked: () => [],
+      failure: 2,
+      sysPage: 3,
+    },
+    240800072: {
+      // GEN 3 OFF
+      flightPhaseInhib: [1, 4, 5, 6, 7, 9, 10, 12],
+      simVarIsActive: this.fws.gen3AbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [],
+      whichItemsChecked: () => [],
+      failure: 2,
+      sysPage: 3,
+    },
+    240800073: {
+      // GEN 4 OFF
+      flightPhaseInhib: [1, 4, 5, 6, 7, 9, 10, 12],
+      simVarIsActive: this.fws.gen4AbnormalyOff,
+      notActiveWhenFaults: [],
+      whichItemsToShow: () => [],
+      whichItemsChecked: () => [],
+      failure: 2,
+      sysPage: 3,
+    },
     // 26 - FIRE PROTECTION
     260800001: {
       // APU FIRE
