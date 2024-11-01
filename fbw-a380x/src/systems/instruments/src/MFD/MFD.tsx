@@ -15,7 +15,7 @@ import {
   Subscribable,
   VNode,
 } from '@microsoft/msfs-sdk';
-import { DatabaseItem, Waypoint } from '@flybywiresim/fbw-sdk';
+import { DatabaseItem, Fix, Waypoint } from '@flybywiresim/fbw-sdk';
 
 import { MouseCursor } from 'instruments/src/MsfsAvionicsCommon/UiWidgets/MouseCursor';
 
@@ -59,6 +59,10 @@ export interface MfdDisplayInterface {
   interactionMode: Subscribable<InteractionMode>;
 
   openMessageList(): void;
+
+  get positionMonitorFix(): Fix | null;
+
+  set positionMonitorFix(fix: Fix | null);
 }
 
 export class MfdComponent extends DisplayComponent<MfdComponentProps> implements DisplayInterface, MfdDisplayInterface {
@@ -118,6 +122,16 @@ export class MfdComponent extends DisplayComponent<MfdComponentProps> implements
   private duplicateNamesOpened = Subject.create<boolean>(false);
 
   private duplicateNamesRef = FSComponent.createRef<MfdFmsFplnDuplicateNames>();
+
+  private posMonitorFix: Fix | null = null;
+
+  get positionMonitorFix(): Fix | null {
+    return this.posMonitorFix;
+  }
+
+  set positionMonitorFix(fix: Fix | null) {
+    this.posMonitorFix = fix;
+  }
 
   // Necessary to enable mouse interaction
   get isInteractive(): boolean {
