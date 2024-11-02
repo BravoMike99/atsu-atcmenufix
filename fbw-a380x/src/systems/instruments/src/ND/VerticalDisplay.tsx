@@ -47,6 +47,8 @@ export class VerticalDisplayDummy extends DisplayComponent<VerticalDisplayProps>
     (r) => a380EfisRangeSettings[r],
   );
 
+  private readonly vdRangeSetting = this.ndRangeSetting.map((r) => (r > 160 ? 160 : r)); // TODO Display arrow next to VD range indicator when selected range is above 160NM
+
   private readonly visible = MappedSubject.create(
     ([mode, range]) =>
       [EfisNdMode.PLAN, EfisNdMode.ROSE_ILS, EfisNdMode.ROSE_VOR].includes(mode) || range === -1 ? 'none' : 'block',
@@ -158,16 +160,16 @@ export class VerticalDisplayDummy extends DisplayComponent<VerticalDisplayProps>
             0
           </text>
           <text x="285" y="797" class="Cyan FontSmallest MiddleAlign">
-            {this.ndRangeSetting.map((value) => (value / 4) * 1)}
+            {this.vdRangeSetting.map((value) => (value / 4) * 1)}
           </text>
           <text x="420" y="797" class="Cyan FontSmallest MiddleAlign">
-            {this.ndRangeSetting.map((value) => (value / 4) * 2)}
+            {this.vdRangeSetting.map((value) => (value / 4) * 2)}
           </text>
           <text x="555" y="797" class="Cyan FontSmallest MiddleAlign">
-            {this.ndRangeSetting.map((value) => (value / 4) * 3)}
+            {this.vdRangeSetting.map((value) => (value / 4) * 3)}
           </text>
           <text x="690" y="797" class="Cyan FontSmallest MiddleAlign">
-            {this.ndRangeSetting.map((value) => (value / 4) * 4)}
+            {this.vdRangeSetting}
           </text>
         </g>
         <g visibility={this.vdAvailable.map((a) => (a ? 'visible' : 'hidden'))}>
