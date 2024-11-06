@@ -74,6 +74,8 @@ export class MfdComponent extends DisplayComponent<MfdComponentProps> implements
     return this.#uiService;
   }
 
+  public positionMonitorFix: Fix | null = null;
+
   public readonly hEventConsumer = this.props.bus.getSubscriber<InternalKccuKeyEvent>().on('kccuKeyEvent');
 
   public readonly interactionMode = Subject.create<InteractionMode>(InteractionMode.Touchscreen);
@@ -122,16 +124,6 @@ export class MfdComponent extends DisplayComponent<MfdComponentProps> implements
   private duplicateNamesOpened = Subject.create<boolean>(false);
 
   private duplicateNamesRef = FSComponent.createRef<MfdFmsFplnDuplicateNames>();
-
-  private posMonitorFix: Fix | null = null;
-
-  get positionMonitorFix(): Fix | null {
-    return this.posMonitorFix;
-  }
-
-  set positionMonitorFix(fix: Fix | null) {
-    this.posMonitorFix = fix;
-  }
 
   // Necessary to enable mouse interaction
   get isInteractive(): boolean {
