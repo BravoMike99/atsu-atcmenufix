@@ -16,13 +16,27 @@ import { FmsErrorType } from '@fmgc/FmsError';
 interface MfdFmsPositionMonitorPageProps extends AbstractMfdPageProps {}
 
 export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProps> {
+
+  private readonly navPrimary = Subject.create(false);
+
+  private readonly navPrimaryClass = this.navPrimary.map((n) => n? 'mfd-value' : 'mfd-value amber');
+
+  private readonly navPrimaryText = this.navPrimary.map((n) => n? 'NAV PRIMARY' : 'NAV PRIMARY LOST');
+
+  private readonly fmsAccuracyHigh = Subject.create(false);
+
+  private readonly fmsAccuracyVisibility = this.navPrimary.map((n) => "visibility:" + n? 'hidden' : 'visible');
+
+  private readonly fmsAccuracyClass = this.fmsAccuracyHigh.map((a) => a? 'mfd-value' : 'mfd-value amber');
+
+  private readonly fmsAccuracyText = this.fmsAccuracyHigh.map((a) => a? 'HIGH' : 'LO');
+
   private readonly fmsRnp = Subject.create<number | null>(null);
 
   private readonly rnpEnteredByPilot = Subject.create(false);
 
   private readonly fmsEpu = Subject.create('-.--');
-
-  private readonly fmsAccuracy = Subject.create('');
+  
 
   private readonly ir1LatitudeRegister = Arinc429Register.empty();
 
@@ -109,9 +123,13 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
       return;
     }
 
+
+    // FIXME Read from FM once implemented
+    this.navPrimary.set(SimVar.GetSimVarValue('L:A32NX_ADIRS_USES_GPS_AS_PRIMARY', 'bool'));
+
     const navigation = this.props.fmcService.master.navigation;
     const rnp = navigation.getActiveRnp();
-    this.fmsAccuracy.set(navigation.isAcurracyHigh() ? 'HIGH' : 'LO');
+    this.fmsAccuracyHigh.set(navigation.isAcurracyHigh());
     this.fmsEpu.set(navigation.getEpe() != Infinity ? navigation.getEpe().toFixed(2) : '--.-');
     this.fmsRnp.set(rnp?? null);
     this.rnpEnteredByPilot.set(navigation.isPilotRnp());
@@ -126,7 +144,7 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
       this.fillIrData(2, this.ir2LatitudeRegister, this.ir2LongitudeRegister, this.ir2Coordinates, fmCoordinates, this.ir2Position, this.ir2PositionDeviation);
       this.fillIrData(3, this.ir3LatitudeRegister, this.ir3LongitudeRegister, this.ir3Coordinates, fmCoordinates, this.ir3Position, this.ir3PositionDeviation);
 
-      // TODO replace with MMR signals once implemented
+      // FIXME replace with MMR signals once implemented
       this.gpsCoordinates.lat = SimVar.GetSimVarValue('GPS POSITION LAT', 'degree latitude');
       this.gpsCoordinates.long = SimVar.GetSimVarValue('GPS POSITION LON', 'degree longitude');
       this.gpsPositionText.set(coordinateToString(this.gpsCoordinates, false));
@@ -196,20 +214,7 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
           <div class="mfd-pos-monitor-header"></div>
           <div class="mfd-pos-top-row">
             <div class="mfd-label-value-container">
-              <span class="mfd-label mfd-spacing-right">ACCURACY</span>
-              <span class="mfd-value">{this.fmsAccuracy}</span>
-            </div>
-            <div class="mfd-label-value-container" style={"margin-right: 5px;"}>
-              <span class="mfd-label mfd-spacing-right" style="width: 70px;">
-                EPU
-              </span>
-              <span class="mfd-value">{this.fmsEpu}</span>
-              <span class="mfd-label-unit mfd-unit-trailing">NM</span>
-            </div>
-          </div>
-          <div class="mfd-pos-top-row">
-            <div class="mfd-label-value-container">
-              <span class="mfd-value mfd-spacing-right">GPS PRIMARY</span>
+              <span class={this.navPrimaryClass}>{this.navPrimaryText}</span>
             </div>
             <div class="mfd-label-value-container">
               <span class="mfd-label mfd-spacing-right">RNP</span>
@@ -220,11 +225,24 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
                 enteredByPilot={this.rnpEnteredByPilot}
                 canBeCleared={Subject.create(true)}
                 containerStyle="width: 130px;"
-                alignText="center"
+                alignText="flex-end"
                 errorHandler={(e) => this.props.fmcService.master?.showFmsErrorMessage(e)}
                 hEventConsumer={this.props.mfd.hEventConsumer}
                 interactionMode={this.props.mfd.interactionMode}
               />
+            </div>
+          </div>
+          <div class="mfd-pos-top-row">
+            <div class="mfd-label-value-container">
+              <span class="mfd-label mfd-spacing-right"style={this.fmsAccuracyVisibility}>ACCURACY</span>
+              <span class={this.fmsAccuracyClass}>{this.fmsAccuracyText}</span>
+            </div>
+            <div class="mfd-label-value-container" style={"margin-right: 5px;"}>
+              <span class="mfd-label mfd-spacing-right" style="width: 70px;">
+                EPU
+              </span>
+              <span class="mfd-value">{this.fmsEpu}</span>
+              <span class="mfd-label-unit mfd-unit-trailing">NM</span>
             </div>
           </div>
           <div class="fc mfd-pos-monitor-table">
@@ -384,9 +402,9 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
               buttonStyle="margin-right: 5px; width:150px;"
             />
              <Button
-              label="GPS"
+              label="GNSS"
               disabled={Subject.create(true)}
-              onClick={() => this.props.mfd.uiService.navigateTo('fms/position/gps')}
+              onClick={() => this.props.mfd.uiService.navigateTo('fms/position/gnss')}
               buttonStyle="margin-right: 5px; width:150px;"
             />
              <Button

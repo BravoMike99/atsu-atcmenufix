@@ -40,7 +40,7 @@ Status legend:
 | ✅ | fms/position/irs | 1 | data sources inconsistent |
 | ✅ | fms/position/navaids | 2 | deselect glide, ADF input fields, radio nav mode/position, selected navaids table |
 | 🟥 | fms/position/monitor | 3 | tbd |
-| 🟥 | fms/position/gps | 3 | tbd |
+| 🟥 | fms/position/gnss | 3 | tbd |
 | 🟥 | fms/position/report | 4 | tbd |
 |  |  |
 | 🟥 | fms/sec/index | 4 | tbd |

@@ -65,7 +65,7 @@ export class FmsHeader extends AbstractHeader {
               { label: 'REPORT', action: () => this.props.uiService.navigateTo('fms/position/report'), disabled: true },
               { label: 'NAVAIDS', action: () => this.props.uiService.navigateTo('fms/position/navaids') },
               { label: 'IRS', action: () => this.props.uiService.navigateTo('fms/position/irs') },
-              { label: 'GPS', action: () => this.props.uiService.navigateTo('fms/position/gps'), disabled: true },
+              { label: 'GNSS', action: () => this.props.uiService.navigateTo('fms/position/gnss'), disabled: true },
             ]}
             idPrefix={`${this.props.uiService.captOrFo}_MFD_pageSelectorPosition`}
             containerStyle="flex: 1"
