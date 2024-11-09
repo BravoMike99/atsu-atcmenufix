@@ -19,17 +19,17 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
 
   private readonly navPrimary = Subject.create(false);
 
-  private readonly navPrimaryClass = this.navPrimary.map((n) => n? 'mfd-value bigger' : 'mfd-value amber bigger');
+  private readonly navPrimaryClass = this.navPrimary.map((v) => v? 'mfd-value bigger' : 'mfd-value amber bigger');
 
-  private readonly navPrimaryText = this.navPrimary.map((n) => n? 'NAV PRIMARY' : 'NAV PRIMARY LOST');
+  private readonly navPrimaryText = this.navPrimary.map((v) => v? 'NAV PRIMARY' : 'NAV PRIMARY LOST');
 
   private readonly fmsAccuracyHigh = Subject.create(false);
 
-  private readonly fmsAccuracyVisibility = this.navPrimary.map((n) => "visibility:" + (n ? 'hidden' : 'visible'));
+  private readonly fmsAccuracyVisibility = this.navPrimary.map((v) => "visibility:" + (v ? 'hidden' : 'visible'));
 
-  private readonly fmsAccuracyClass = this.fmsAccuracyHigh.map((a) => a? 'mfd-value bigger' : 'mfd-value amber bigger');
+  private readonly fmsAccuracyClass = this.fmsAccuracyHigh.map((v) => v? 'mfd-value bigger' : 'mfd-value amber bigger');
 
-  private readonly fmsAccuracyText = this.fmsAccuracyHigh.map((a) => a? 'HIGH' : 'LO');
+  private readonly fmsAccuracyText = this.fmsAccuracyHigh.map((v) => v? 'HIGH' : 'LO');
 
   private readonly fmsRnp = Subject.create<number | null>(null);
 
@@ -38,6 +38,10 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
   private readonly fmsEpu = Subject.create('-.--');
 
   private readonly fmPosition = Subject.create('');
+
+  private readonly positionSensorsVisible = Subject.create(true);
+
+  private readonly positionSensorsVisibility = this.positionSensorsVisible.map((v) => "visibility:" + (v ? 'visible' : 'hidden'));
   
 
   private readonly ir1LatitudeRegister = Arinc429Register.empty();
@@ -132,11 +136,11 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
     this.rnpEnteredByPilot.set(navigation.isPilotRnp());
     const fmCoordinates = this.props.fmcService.master.navigation.getPpos();
     const fmPositionAvailable = fmCoordinates != null;
-    if (!this.positionFrozen.get()) {
-      this.fmPosition.set(
-        fmPositionAvailable? 
-        coordinateToString(this.props.fmcService.master.navigation.getPpos()!, false) : '--°--.--/---°--.--',
-      );
+    this.fmPosition.set(
+      fmPositionAvailable? 
+      coordinateToString(this.props.fmcService.master.navigation.getPpos()!, false) : '--°--.--/---°--.--',
+    );
+    if (this.positionSensorsVisible.get() && !this.positionFrozen.get()) {
       this.fillIrData(1, this.ir1LatitudeRegister, this.ir1LongitudeRegister, this.ir1Coordinates, fmCoordinates, this.ir1Position, this.ir1PositionDeviation);
       this.fillIrData(2, this.ir2LatitudeRegister, this.ir2LongitudeRegister, this.ir2Coordinates, fmCoordinates, this.ir2Position, this.ir2PositionDeviation);
       this.fillIrData(3, this.ir3LatitudeRegister, this.ir3LongitudeRegister, this.ir3Coordinates, fmCoordinates, this.ir3Position, this.ir3PositionDeviation);
@@ -255,7 +259,7 @@ export class MfdFmsPositionMonitor extends FmsPage<MfdFmsPositionMonitorPageProp
 
           <div class ="fr space-between">
 
-            <div class="mfd-position-monitor-sensors-container">
+            <div class="mfd-position-monitor-sensors-container" style={this.positionSensorsVisibility}>
             <div class="mfd-label-value-container" >
             <span class="mfd-label mfd-spacing-right">GNSS1</span>
             <span class="mfd-value bigger">{this.gpsPositionText}</span>
