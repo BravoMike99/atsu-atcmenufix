@@ -168,7 +168,7 @@ export interface PFDSimvars {
   fcuLeftVelocityVectorOn: boolean;
   fcuRightVelocityVectorOn: boolean;
   fcuApproachModeActive: boolean;
-  fcuLocModeActive : boolean;
+  fcuLocModeActive: boolean;
 }
 
 export enum PFDVars {
@@ -505,7 +505,7 @@ export class PFDSimvarPublisher extends UpdatableSimVarPublisher<PFDSimvars> {
     ['fcuLeftVelocityVectorOn', { name: PFDVars.fcuLeftVelocityVectorOn, type: SimVarValueType.Bool }],
     ['fcuRightVelocityVectorOn', { name: PFDVars.fcuRightVelocityVectorOn, type: SimVarValueType.Bool }],
     ['fcuApproachModeActive', { name: PFDVars.fcuApproachModeActive, type: SimVarValueType.Bool }],
-    ['fcuLocModeActive', {name: PFDVars.fcuLocModeActive, type: SimVarValueType.Bool} ]
+    ['fcuLocModeActive', { name: PFDVars.fcuLocModeActive, type: SimVarValueType.Bool }],
   ]);
 
   public constructor(bus: EventBus) {
